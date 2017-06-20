@@ -1,7 +1,7 @@
 {
-  "name": "StatesQuiz",
+  "name": "alexa-skill-uk-towns-and-counties",
   "version": "1.0.0",
-  "description": "A quiz about states and their capitals.",
+  "description": "A quiz about UK towns and counties",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,7 @@
     "skill",
     "fact"
   ],
-  "author": "Amazon.com",
+  "author": "mathalope.co.uk",
   "license": "Apache-2.0",
   "dependencies": {
     "alexa-sdk": "^1.0.0",
