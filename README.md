@@ -1,3 +1,13 @@
+# Intro
+
+This repository corresponds to the Alexa Skill "UK Towns and Counties". This is a modification of the official Alexa [skill-samples-nodejs-quiz-game](https://github.com/alexa/skill-sample-nodejs-quiz-game) tutorial.
+
+The source files deployed to AWS Lambda function can be found in the `/src` directory. i.e. do a `npm install` in the `/src` directory, highlight all the files within that directory, compress files and create a zip file, and upload that zip file to AWS Lambda.
+
+The meat of the Skill is `src/index.js` - it imports static data from `src/data.js` (data obtained from [whitefiles.org](http://whitefiles.org/b4_g/5_towns_to_counties_index/)).
+
+The followings are the original tutorial from the Alexa [skill-samples-nodejs-quiz-game](https://github.com/alexa/skill-sample-nodejs-quiz-game) repository. This skill is inspired by the tutorial.
+
 # Build An Alexa Quiz Game Skill
 <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/header._TTH_.png" />
 
