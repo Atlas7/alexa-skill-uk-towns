@@ -106,10 +106,10 @@ function getCardTitle(item) { return item.townName;}
 
 //This is the small version of the card image.  We use our data as the naming convention for our images so that we can dynamically
 //generate the URL to the image.  The small image should be 720x400 in dimension.
-function getSmallImage(item) { return "http://mathalope.co.uk/wp-content/uploads/2017/06/uk_flag_720px_x_400px.png"; }
+function getSmallImage(item) { return "https://raw.githubusercontent.com/Atlas7/alexa-skill-uk-towns-and-counties/master/src/uk_flag_720px_x_400px.png"; }
 
 //This is the large version of the card image.  It should be 1200x800 pixels in dimension.
-function getLargeImage(item) { return "http://mathalope.co.uk/wp-content/uploads/2017/06/uk_flag_1200px_x_800px.png"; }
+function getLargeImage(item) { return "https://raw.githubusercontent.com/Atlas7/alexa-skill-uk-towns-and-counties/master/src/uk_flag_1200px_x_800px.png"; }
 
 //=========================================================================================================================================
 //TODO: Replace this data with your own.
