@@ -69,13 +69,13 @@ var speechConsWrong = ["Argh", "Aw man", "Blarg", "Blast", "Boo", "Bummer", "Dar
 "Mamma mia", "Oh boy", "Oh dear", "Oof", "Ouch", "Ruh roh", "Shucks", "Uh oh", "Wah wah", "Whoops a daisy", "Yikes"];
 
 //This is the welcome message for when a user starts the skill without a specific intent.
-var WELCOME_MESSAGE = "Welcome to the UK Towns and Counties Quiz Game!  You can ask me about any of the towns in UK, or you can ask me to start a quiz.  What would you like to do?";
+var WELCOME_MESSAGE = "Welcome to the UK Towns!  You can ask me about any of the towns in UK, or you can ask me to start a quiz.  What would you like to do?";
 
 //This is the message a user will hear when they start a quiz.
 var START_QUIZ_MESSAGE = "OK.  I will ask you 10 questions about the UK Towns.";
 
 //This is the message a user will hear when they try to cancel or stop the skill, or when they finish a quiz.
-var EXIT_SKILL_MESSAGE = "Thank you for playing the UK Towns and Counties Quiz Game!  Let's play again soon!";
+var EXIT_SKILL_MESSAGE = "Thank you for learning about UK Towns!  Speak again soon!";
 
 //This is the message a user will hear after they ask (and hear) about a specific data element.
 var REPROMPT_SPEECH = "Which other UK Town would you like to know about?";
@@ -106,10 +106,10 @@ function getCardTitle(item) { return item.townName;}
 
 //This is the small version of the card image.  We use our data as the naming convention for our images so that we can dynamically
 //generate the URL to the image.  The small image should be 720x400 in dimension.
-function getSmallImage(item) { return "https://raw.githubusercontent.com/Atlas7/alexa-skill-uk-towns-and-counties/master/src/uk_flag_720px_x_400px.png"; }
+function getSmallImage(item) { return "https://raw.githubusercontent.com/Atlas7/alexa-skill-uk-towns/master/src/uk_flag_720px_x_400px.png"; }
 
 //This is the large version of the card image.  It should be 1200x800 pixels in dimension.
-function getLargeImage(item) { return "https://raw.githubusercontent.com/Atlas7/alexa-skill-uk-towns-and-counties/master/src/uk_flag_1200px_x_800px.png"; }
+function getLargeImage(item) { return "https://raw.githubusercontent.com/Atlas7/alexa-skill-uk-towns/master/src/uk_flag_1200px_x_800px.png"; }
 
 //=========================================================================================================================================
 //TODO: Replace this data with your own.
@@ -157,7 +157,10 @@ var startHandlers = Alexa.CreateStateHandler(states.START,{
     "AnswerIntent": function() {
         var item = getItem(this.event.request.intent.slots);
 
-        if (item[Object.getOwnPropertyNames(data[0])[0]] != undefined)
+        // handel missing slot value
+        var answerSlotValid = isAnswerSlotValid(this.event.request.intent);
+
+        if (answerSlotValid && item[Object.getOwnPropertyNames(data[0])[0]] != undefined)
         {
             if (USE_CARDS_FLAG)
             {
@@ -340,6 +343,12 @@ function getTextDescription(item)
         text += formatCasing(key) + ": " + item[key] + "\n";
     }
     return text;
+}
+
+// add this to handle missing slot value - inspired by Alexa skill-sample-nodejs-trivia index.js
+function isAnswerSlotValid(intent) {
+    var answerSlotFilled = intent && intent.slots && intent.slots.townName && intent.slots.townName.value;
+    return answerSlotFilled
 }
 
 exports.handler = (event, context) => {
